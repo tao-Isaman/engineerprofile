@@ -17,6 +17,11 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: "preconnect", href: "https://fonts.gstatic.com" },
       { href: "https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap", rel: "stylesheet" }],
+    script: [
+      { src: "/__/firebase/8.2.9/firebase-app.js" },
+      { src: "/__/firebase/8.2.9/firebase-analytics.js" },
+      { src: "/__/firebase/init.js" }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
