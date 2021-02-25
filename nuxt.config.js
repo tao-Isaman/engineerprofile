@@ -13,7 +13,10 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      { href: "https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap", rel: "stylesheet" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -55,7 +58,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
