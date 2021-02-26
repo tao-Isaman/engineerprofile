@@ -42,7 +42,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/firebase'
+    '@nuxtjs/firebase',
   ],
 
   firebase: {
@@ -61,11 +61,10 @@ export default {
         initialize: {
           onAuthStateChangedAction: 'onAuthStateChanged',
         },
-        ssr: true,
-        disableEmulatorWarnings: false,
-      }
+      }, // Just as example. Can be any other service.
 
-    },
+    }
+
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

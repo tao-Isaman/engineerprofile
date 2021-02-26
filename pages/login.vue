@@ -17,7 +17,9 @@
         required
       ></v-text-field>
 
-      <v-btn :disabled="!valid" color="success" class="mr-4"> login </v-btn>
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="login">
+        login
+      </v-btn>
     </v-form>
   </v-container>
 </template>
@@ -36,16 +38,20 @@ export default {
   }),
 
   methods: {
-    // async signInUser() {
-    //   try {
-    //     await this.$fire.auth.signInWithEmailAndPassword(
-    //       this.email,
-    //       this.password
-    //     )
-    //   } catch (e) {
-    //     alert(e)
-    //   }
-    // },
+    async login() {
+      try {
+        await this.$fire.auth.signInWithEmailAndPassword(
+          this.email,
+          this.password
+        )
+      } catch (e) {
+        alert(e)
+      }
+      //   this.$store.commit('auth/setAuth', {
+      //     email: this.email,
+      //     password: this.password,
+      //   })
+    },
   },
 }
 </script>
