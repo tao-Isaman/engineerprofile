@@ -17,14 +17,7 @@
         required
       ></v-text-field>
 
-      <v-btn
-        :disabled="!valid"
-        color="success"
-        class="mr-4"
-        @click="validate"
-      >
-        login
-      </v-btn>
+      <v-btn :disabled="!valid" color="success" class="mr-4"> login </v-btn>
     </v-form>
   </v-container>
 </template>
@@ -41,5 +34,18 @@ export default {
     password: '',
     passwordRules: [(v) => !!v || 'password is required'],
   }),
+
+  methods: {
+    // async signInUser() {
+    //   try {
+    //     await this.$fire.auth.signInWithEmailAndPassword(
+    //       this.email,
+    //       this.password
+    //     )
+    //   } catch (e) {
+    //     alert(e)
+    //   }
+    // },
+  },
 }
 </script>

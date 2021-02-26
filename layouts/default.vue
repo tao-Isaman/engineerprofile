@@ -6,7 +6,7 @@
       <v-btn text> หน้าแรก </v-btn>
       <v-btn text> ทดลองสอบ </v-btn>
       <v-btn text> ลงทะเบียน </v-btn>
-      <v-btn text> เข้าสู่ระบบ </v-btn>
+      <v-btn text @click="routerLogin()"> เข้าสู่ระบบ </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -22,6 +22,12 @@ export default {
     return {
       title: 'ทำข้อสอบวิศวกรรมออนไลน์',
     }
+  },
+
+  methods: {
+    routerLogin() {
+      this.$router.push('/login')
+    },
   },
 }
 </script>
