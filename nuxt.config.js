@@ -62,6 +62,9 @@ export default {
           onAuthStateChangedAction: 'onAuthStateChanged',
         },
       }, // Just as example. Can be any other service.
+      firestore: {
+        memoryOnly: false,
+      },
 
     }
 

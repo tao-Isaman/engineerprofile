@@ -40,17 +40,27 @@ export default {
   methods: {
     async login() {
       try {
-        await this.$fire.auth.signInWithEmailAndPassword(
-          this.email,
-          this.password
-        )
+        await this.$fire.auth
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then((value) => {
+            this.writeToFirestore(value)
+            console.log(value)
+          })
       } catch (e) {
         alert(e)
       }
-      //   this.$store.commit('auth/setAuth', {
-      //     email: this.email,
-      //     password: this.password,
-      //   })
+    },
+    async writeToFirestore(id) {
+      const messageRef = this.$fire.firestore.collection('User').doc('Session')
+      try {
+        await messageRef.set({
+          Session: 'Nuxt-Fire with Firestore rocks!',
+        })
+      } catch (e) {
+        alert(e)
+        return
+      }
+      alert('Success.')
     },
   },
 }
