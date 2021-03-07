@@ -42,36 +42,19 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/firebase',
   ],
 
-  firebase: {
-    config: {
-      apiKey: process.env.APIKEY,
-      authDomain: process.env.AUTHDOMAIN,
-      databaseURL: process.env.DATABASEURL,
-      projectId: process.env.PROJECTID,
-      storageBucket: process.env.BUCKET,
-      messagingSenderId: process.env.SENDERID,
-      appId: process.env.APPID,
-      measurementId: process.env.ANALYTICID,
-    },
-    services: {
-      auth: {
-        initialize: {
-          onAuthStateChangedAction: 'onAuthStateChanged',
-        },
-      }, // Just as example. Can be any other service.
-      firestore: {
-        memoryOnly: false,
-      },
-
-    }
-
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BACKEND_BASEURL,
+    proxy: true,
+    credentials: false,
+  },
+  proxy: {
+    '/api': 'http://localhost:8000',
+    '/api2/': 'http://api.another-website.com'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form v-if="token == ''" ref="form" v-model="valid" lazy-validation>
       <v-text-field
         v-model="email"
         :rules="emailRules"
@@ -21,6 +21,9 @@
         login
       </v-btn>
     </v-form>
+    <div v-else>
+      <h2>{{ token }}</h2>
+    </div>
   </v-container>
 </template>
 
@@ -35,32 +38,21 @@ export default {
     ],
     password: '',
     passwordRules: [(v) => !!v || 'password is required'],
+    token: '',
   }),
 
   methods: {
-    async login() {
-      try {
-        await this.$fire.auth
-          .signInWithEmailAndPassword(this.email, this.password)
-          .then((value) => {
-            this.writeToFirestore(value)
-            console.log(value)
-          })
-      } catch (e) {
-        alert(e)
-      }
-    },
-    async writeToFirestore(id) {
-      const messageRef = this.$fire.firestore.collection('User').doc('Session')
-      try {
-        await messageRef.set({
-          Session: 'Nuxt-Fire with Firestore rocks!',
+    login() {
+      this.$store
+        .dispatch('login/login', {
+          email: this.email,
+          password: this.password,
         })
-      } catch (e) {
-        alert(e)
-        return
-      }
-      alert('Success.')
+        .then((value) => {
+          console.log(value)
+          this.token = value.username
+          localStorage.setItem('JWT', value.access_token)
+        })
     },
   },
 }
